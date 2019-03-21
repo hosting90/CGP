@@ -53,6 +53,13 @@ foreach($CONFIG['term'] as $key => $s) {
 }
 print "</ul>\n";
 
+echo "<h2 style='margin-left:25%'>Výřez</h2>";
+printf("<img src=\"%s%s\">\n",
+		htmlentities($CONFIG['weburl']),
+		htmlentities(build_url('graph2.php', $_GET)));
+
+echo "<h2 style='margin-left:25%'>Detail</h2>";
+
 if ($CONFIG['graph_type'] == 'canvas') {
 	chdir($CONFIG['webdir']);
 	include $CONFIG['webdir'].'/graph.php';
@@ -62,6 +69,5 @@ if ($CONFIG['graph_type'] == 'canvas') {
 		htmlentities(build_url('graph.php', $_GET)));
 }
 echo '</div>';
-echo "</fieldset>\n";
-
+echo "</fieldset><!-- end -->\n";
 html_end();

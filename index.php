@@ -20,10 +20,19 @@ if (isset($CONFIG['cat']) && is_array($CONFIG['cat'])) {
 if(!$chosts = collectd_hosts())
 	printf('<p class="warn">Error: No Collectd hosts found in <em>%s</em></p>', $CONFIG['datadir']);
 $uhosts = array_diff($chosts, $h);
+$h = array();
+
+foreach ( $uhosts as $vh) {
+	if (preg_match('/^(hc|coh|atcdc|fas|slo|stc|sh)-vh/',$vh)) {
+		$h[] = $vh;
+	}
+}
+host_summary("Fyzické servery", $h);
+$uhosts = array_diff($chosts, $h);
 
 # show all uncategorized hosts
 if ($uhosts) {
-	host_summary('uncategorized', $uhosts);
+	host_summary('Virtuální servery', $uhosts);
 }
 
 if ($CONFIG['showtime']) {

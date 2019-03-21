@@ -185,14 +185,25 @@ class Type_Base {
 	}
 
 	function get_filenames() {
-		$identifier = sprintf('%s/%s%s%s%s%s/%s%s%s',
-			$this->args['host'],
-			$this->args['plugin'],
-			strlen($this->args['category']) ? '-' : '', $this->args['category'],
-			strlen($this->args['pinstance']) ? '-' : '', $this->args['pinstance'],
-			$this->args['type'],
-			strlen($this->args['tinstance']) ? '-' : '', $this->args['tinstance']
-		);
+                if ($this->args['plugin'] == 'libvirt') {
+                        $identifier = sprintf('%s/%s/%s%s%s%s/%s%s%s',
+                                $this->args['host'],
+                                $this->args['plugin'],
+                                strlen($this->args['category']) ? '' : '', $this->args['category'],
+                                strlen($this->args['pinstance']) ? '' : '', '',
+                                $this->args['type'],
+                                strlen($this->args['tinstance']) ? '-' : '', $this->args['tinstance']
+                        );
+                } else {
+                        $identifier = sprintf('%s/%s%s%s%s%s/%s%s%s',
+                                $this->args['host'],
+                                $this->args['plugin'],
+                                strlen($this->args['category']) ? '-' : '', $this->args['category'],
+                                strlen($this->args['pinstance']) ? '-' : '', $this->args['pinstance'],
+                                $this->args['type'],
+                                strlen($this->args['tinstance']) ? '-' : '', $this->args['tinstance']
+                        );
+                }
 		$identifier = preg_replace("/([*?[])/", '[$1]', $identifier);
 
 		$wildcard = strlen($this->args['tinstance']) ? '.' : '[-.]*';

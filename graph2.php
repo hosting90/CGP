@@ -46,10 +46,15 @@ if (function_exists('json_decode') && file_exists('plugin/'.$plugin.'.json')) {
 if (!isset($plugin_json[$type]['type']))
 	$plugin_json[$type]['type'] = 'default';
 
+
 switch ($plugin_json[$type]['type']) {
 	case 'stacked':
 		require_once 'type/GenericStacked.class.php';
 		$obj = new Type_GenericStacked($CONFIG, $_GET);
+		break;
+	case 'virt_quota_acct':
+		require_once 'type/virtQuotaAcct.class.php';
+		$obj = new Type_VirtQuotaAcct($CONFIG, $_GET);
 		break;
 	case 'io':
 		require_once 'type/GenericIO.class.php';
@@ -58,6 +63,10 @@ switch ($plugin_json[$type]['type']) {
 	case 'uptime':
 		require_once 'type/Uptime.class.php';
 		$obj = new Type_Uptime($CONFIG, $_GET);
+		break;
+	case 'vcpu_total':
+		require_once 'type/vcpuTotal.class.php';
+		$obj = new Type_VcpuTotal($CONFIG, $_GET);
 		break;
 	default:
 		require_once 'type/Default.class.php';

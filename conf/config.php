@@ -19,7 +19,7 @@ $CONFIG['rrdtool_opts'] = array();
 #$CONFIG['cat']['category1'] = array('host1', 'host2');
 
 # default plugins to show on host page
-$CONFIG['overview'] = array('load', 'cpu', 'memory', 'swap');
+$CONFIG['overview'] = array('load', 'cpu', 'memory', 'virt');
 
 # example of filter to show only the if_octets of eth0 on host page
 # (interface must be enabled in the overview config array)
@@ -48,7 +48,7 @@ $CONFIG['term'] = array(
 $CONFIG['network_datasize'] = 'bytes';
 
 # "png", "svg", "canvas" or "hybrid" (canvas on detail page, png on the others) graphs
-$CONFIG['graph_type'] = 'png';
+$CONFIG['graph_type'] = 'hybrid';
 
 # For canvas graphs, use 'async' or 'sync' fetch method
 $CONFIG['rrd_fetch_method'] = 'sync';
@@ -61,7 +61,7 @@ $CONFIG['negative_io'] = false;
 $CONFIG['percentile'] = false;
 
 # create smooth graphs (rrdtool -E)
-$CONFIG['graph_smooth'] = false;
+$CONFIG['graph_smooth'] = true;
 
 # draw min/max spikes in a lighter color in graphs with type default
 $CONFIG['graph_minmax'] = false;

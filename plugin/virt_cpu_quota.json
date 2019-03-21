@@ -1,0 +1,14 @@
+{
+	"counter": {
+		"title": "virsh schedinfo {{PI}}",
+		"vertical": "Schedinfo (VCPU quota)",
+		"type": "virt_quota_acct",
+		"legend": {
+			"cpuacct": {
+				"name": "Total CPU acct",
+				"color": "0000ff"
+			}
+		},
+		"legend_format": "%5.1lf"
+	}
+}

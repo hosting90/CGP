@@ -50,7 +50,7 @@ a:hover {
 }
 
 table.summary th {
-	width: 300px;
+	width: 350px;
 	font-weight: normal;
 	text-align: left;
 }
@@ -69,7 +69,7 @@ table.summary td {
 }
 
 table.summary td.wide {
-	width: 125px;
+	width: 250px;
 	text-align: right;
 }
 
@@ -116,6 +116,12 @@ hr {
 	vertical-align: top;
 }
 
+.graphs span {
+	display: inline-block;
+	width: 500px; 
+	text-align: center;
+}
+
 .plugins {
 	float: left;
 	margin-right: 25px;
@@ -145,8 +151,9 @@ fieldset {
 }
 
 legend {
+	margin-bottom: 20px;
 	padding: 0;
-	font-size: 1.4em;
+	font-size: 1.6em;
 	font-weight: normal;
 }
 

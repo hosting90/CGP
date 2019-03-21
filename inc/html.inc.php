@@ -235,6 +235,20 @@ function host_summary($cat, $hosts) {
 			urlencode($host),
 			htmlentities($host));
 
+                if (!preg_match('/^hc-vh/',$host)) {
+#                       echo $CONFIG['datadir'].'/'.$host;
+#                       print_r(array_diff(scandir($CONFIG['datadir'].'/'.$host), array('.', '..')));
+#                       echo var_dump(collectd_plugins($host));
+#                       echo var_dump(collectd_plugindata($host, $plugin="virt"));
+#			echo var_dump(collectd_plugindetail($host, "virt", "pi", $where=NULL)[0]);
+			$class = 'wide';
+                        $virtual_id = collectd_plugindetail($host, "virt", "pi", $where=NULL);
+                        if (gettype($virtual_id) != 'boolean') {
+                                $virtual_id = $virtual_id[0];
+                        };
+                        printf('<td class="%s">%s</td>', $class, $virtual_id);
+                }
+
 		if ($CONFIG['showload']) {
 			require_once 'type/Default.class.php';
 			$load = array('h' => $host, 'p' => 'load', 't' => 'load');
@@ -244,8 +258,8 @@ function host_summary($cat, $hosts) {
 			$rrd_info = $rrd->rrd_info($CONFIG['datadir'].'/'.$host.'/load/load.rrd');
 
 			# ignore if file does not exist
-			if (!$rrd_info)
-				continue;
+#			if (!$rrd_info)
+#				continue;
 
 			if (isset($rrd_info['ds[shortterm].last_ds']) &&
 				isset($rrd_info['ds[midterm].last_ds']) &&
@@ -272,8 +286,8 @@ function host_summary($cat, $hosts) {
 			$rrd_info_ca = $rrd->rrd_info($CONFIG['datadir'].'/'.$host.'/memory/memory-cached.rrd');
 
 			# ignore if file does not exist
-			if (!$rrd_info_mu || !$rrd_info_mf || !$rrd_info_bf || !$rrd_info_ca)
-				continue;
+#			if (!$rrd_info_mu || !$rrd_info_mf || !$rrd_info_bf || !$rrd_info_ca)
+#				continue;
 
 			$info='ds[value].last_ds';
 			if (isset($rrd_info_mu[$info]) && isset($rrd_info_mf[$info]) && isset($rrd_info_bf[$info]) && isset($rrd_info_ca[$info]) ) {
@@ -360,12 +374,12 @@ function graphs_from_plugin($host, $plugin, $overview=false) {
 			isset($items['t']) ? $_GET['t'] = $items['t'] : $_GET['t'] = '';
 			isset($items['ti']) ? $_GET['ti'] = $items['ti'] : $_GET['ti'] = '';
 			$_GET['s'] = $time;
-			include $CONFIG['webdir'].'/graph.php';
+			include $CONFIG['webdir'].'/graph2.php';
 		} else {
-			printf('<a href="%1$s%2$s"><img src="%1$s%3$s"></a>'."\n",
+			printf('<a href="%1$s%2$s"><span><img src="%1$s%3$s"></span></a>'."\n",
 				htmlentities($CONFIG['weburl']),
 				htmlentities(build_url('detail.php', $items, $time)),
-				htmlentities(build_url('graph.php', $items, $time))
+				htmlentities(build_url('graph2.php', $items, $time))
 			);
 		}
 	}

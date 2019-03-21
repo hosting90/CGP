@@ -1,0 +1,137 @@
+{
+	"disk_octets": {
+		"title": "Disk Traffic ({{TI}}) on {{PI}}",
+		"vertical": "Bytes per second",
+		"type": "io",
+		"legend": {
+			"read": {
+				"name": "Read",
+				"color": "0000ff"
+			},
+			"write": {
+				"name": "Write",
+				"color": "00b000"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	},
+	"disk_ops": {
+		"title": "Disk Operations ({{TI}}) on {{PI}}",
+		"vertical": "Ops per second",
+		"type": "io",
+		"legend": {
+			"read": {
+				"name": "Read",
+				"color": "0000ff"
+			},
+			"write": {
+				"name": "Write",
+				"color": "00b000"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	},
+	"if_dropped": {
+		"title": "Interface Packets Dropped ({{TI}}) on {{PI}}",
+		"vertical": "Packets/s",
+		"type": "io",
+		"legend": {
+			"rx": {
+				"name": "Receive",
+				"color": "0000ff"
+			},
+			"tx": {
+				"name": "Transmit",
+				"color": "00b000"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	},
+	"if_errors": {
+		"title": "Interface Errors ({{TI}}) on {{PI}}",
+		"vertical": "Errors/s",
+		"type": "io",
+		"legend": {
+			"rx": {
+				"name": "Receive",
+				"color": "0000ff"
+			},
+			"tx": {
+				"name": "Transmit",
+				"color": "00b000"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	},
+	"if_octets": {
+		"title": "Interface Traffic on {{PI}}",
+		"vertical": "{{ND}} per second",
+		"type": "io",
+		"legend": {
+			"rx": {
+				"name": "Receive",
+				"color": "0000ff"
+			},
+			"tx": {
+				"name": "Transmit",
+				"color": "00b000"
+			}
+		},
+		"legend_format": "%5.1lf%s",
+		"datasize": true
+	},
+	"if_packets": {
+		"title": "Interface Packets on {{PI}}",
+		"vertical": "Packets per second",
+		"type": "io",
+		"legend": {
+			"rx": {
+				"name": "Receive",
+				"color": "0000ff"
+			},
+			"tx": {
+				"name": "Transmit",
+				"color": "00b000"
+			}
+		},
+		"legend_format": "%5.1lf%s"
+	},
+	"virt_cpu_total": {
+		"title": "CPU usage on {{PI}}",
+		"vertical": "",
+		"legend": {
+			"value": {
+				"name": "CPU time",
+				"color": "0000ff"
+			}
+		},
+		"legend_format": "%5.1lf",
+		"scale": 0.000001
+	},
+	"virt_vcpu": {
+		"title": "vCPU usage on {{PI}}",
+		"vertical": "Milliseconds",
+		"legend_format": "%5.1lf",
+		"scale": 0.000001
+	},
+	"vcpu_total": {
+		"title": "CPU usage on {{PI}}",
+		"vertical": "%",
+		"legend_format": "%3.2lf",
+		"type": "vcpu_total",
+		"legend": {
+			"value": {
+				"name": "CPU usage",
+				"color": "0000ff"
+			},
+			"cpu_quota": {
+				"name": "CPU quota",
+				"color": "ff0000"
+			},
+			"cpu_hard_quota": {
+				"name": "CPU hardquota",
+				"color": "00ff00"
+			}
+		}
+    }
+}
