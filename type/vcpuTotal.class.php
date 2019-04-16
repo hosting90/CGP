@@ -8,7 +8,7 @@ class Type_VcpuTotal extends Type_Base {
 		$rrdgraph = $this->rrd_options();
 
 		$sources = array('value', 'cpu_quota', 'cpu_hard_quota');	
-		$name = array('CPU usage', 'CPU quota', 'CPU hard quota');
+		$name = array('CPU usage', 'CPU burst quota', 'CPU quota');
 		$color = array('0000ff', 'ff0000', '00ff00');
 		$i = 0;
 		foreach ($sources as $ds) {
